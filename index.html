@@ -1,0 +1,40 @@
+<style>
+    :root { --pink: #FF85A2; --bg: #FFF5F7; }
+    body { margin: 0; background: var(--bg); font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+    #main-card { background: white; width: 85%; max-width: 320px; border-radius: 30px; padding-bottom: 20px; text-align: center; box-shadow: 0 10px 30px rgba(255, 133, 162, 0.2); animation: pop 0.6s ease forwards; }
+    .header-bar { padding: 15px; color: #666; font-weight: bold; border-bottom: 1px solid #eee; }
+    .cat-img { width: 180px; height: 180px; margin: 20px auto; border-radius: 20px; display: block; object-fit: cover; }
+    .text-body { padding: 20px; color: #444; font-size: 18px; font-weight: bold; line-height: 1.5; }
+    .btn-group { border-top: 1px solid #eee; padding: 15px; }
+    .btn-yes { background: var(--pink); color: white; border: none; padding: 12px 30px; border-radius: 20px; font-size: 18px; font-weight: bold; cursor: pointer; }
+    .wish-card { position: absolute; background: white; width: 180px; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; font-weight: bold; border: 2px solid var(--pink); animation: pop 0.4s ease forwards; z-index: 100; }
+    @keyframes pop { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+</style>
+
+<div id="main-card">
+    <div class="header-bar">Hadiah misteri🎁✨</div>
+    <!-- 我已經幫你填好貓咪照片的名字了 -->
+    <img src="Camera_1040g3k031vu3s4pnii9g5q9vqku dtt3or83t4g0.jpg" class="cat-img">
+    <div class="text-body">Cg fatihahhh, Anda ada satu hadiah misteri, confirm nak buka?😜</div>
+    <div class="btn-group">
+        <button class="btn-yes" onclick="startShow()">Nak!</button>
+    </div>
+</div>
+
+<script>
+    const wishes = ["Selamat Hari Guru 💝", "Stay happy selalu!", "Semoga semua smooth", "Rehat awal tau", "Jangan stress sangat", "Love yourself more", "Stay safe selalu", "Semoga sihat selalu", "Smile selalu 😊", "Take care! ✨"];
+    function startShow() {
+        document.getElementById('main-card').style.display = 'none';
+        wishes.forEach((text, i) => {
+            setTimeout(() => {
+                const div = document.createElement('div');
+                div.className = 'wish-card';
+                div.innerText = text;
+                div.style.left = (Math.random() * 60 + 20) + '%';
+                div.style.top = (Math.random() * 60 + 20) + '%';
+                div.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 20 - 10}deg)`;
+                document.body.appendChild(div);
+            }, i * 400);
+        });
+    }
+</script>
