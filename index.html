@@ -1,0 +1,42 @@
+<!-- 這裡我把圖片路徑設為 cat.jpg，你要確保上傳的圖片名字也是這個 -->
+<style>
+    :root { --pink: #FF85A2; --bg: #FFF5F7; }
+    body { margin: 0; background: var(--bg); font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+    #main-card { background: white; width: 85%; max-width: 320px; border-radius: 30px; padding-bottom: 20px; text-align: center; box-shadow: 0 10px 30px rgba(255, 133, 162, 0.2); }
+    .header-bar { padding: 15px; color: #666; font-weight: bold; border-bottom: 1px solid #eee; }
+    /* 這裡是你的圖片 */
+    .cat-img { width: 180px; height: 180px; margin: 20px auto; border-radius: 20px; display: block; object-fit: cover; }
+    .text-body { padding: 20px; color: #444; font-size: 18px; font-weight: bold; }
+    .btn-group { display: flex; border-top: 1px solid #eee; }
+    .btn { flex: 1; padding: 15px; border: none; background: none; font-size: 18px; font-weight: bold; }
+    .btn-yes { color: var(--pink); }
+    .wish-card { position: absolute; background: white; width: 180px; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; font-weight: bold; border: 2px solid var(--pink); animation: pop 0.4s ease forwards; }
+    @keyframes pop { from { transform: translate(-50%, -50%) scale(0); } to { transform: translate(-50%, -50%) scale(1); } }
+</style>
+
+<div id="main-card">
+    <div class="header-bar">Hadiah misteri🎁✨</div>
+    <!-- 重要：這裡的 src 必須和你上傳的圖片檔名一模一樣 -->
+    <img src="cat.jpg" class="cat-img">
+    <div class="text-body">Cg fatihahhh, ada hadiah misteri, buka?😜</div>
+    <div class="btn-group">
+        <button class="btn" onclick="startShow()" style="color:#FF85A2">Nak!</button>
+    </div>
+</div>
+
+<script>
+    const wishes = ["Selamat Hari Guru 💝", "Stay happy selalu!", "Terima kasih Cg!", "Semoga sihat!", "Keep smiling! 😊"];
+    function startShow() {
+        document.getElementById('main-card').style.display = 'none';
+        wishes.forEach((text, i) => {
+            setTimeout(() => {
+                const div = document.createElement('div');
+                div.className = 'wish-card';
+                div.innerText = text;
+                div.style.left = (Math.random() * 60 + 20) + '%';
+                div.style.top = (Math.random() * 60 + 20) + '%';
+                document.body.appendChild(div);
+            }, i * 300);
+        });
+    }
+</script>
